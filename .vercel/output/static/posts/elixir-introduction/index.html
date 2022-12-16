@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://priver.dev/posts/elixir-introduction/">
+    <meta name="generator" content="Astro v1.6.13">
+
+    <!-- General Meta Tags -->
+    <title>Elixir: Introduction</title>
+    <meta name="title" content="Elixir: Introduction">
+    <meta name="description" content="Hey! My name is Emil Privér, I write about stuffs I learn and build. I am a software developer who likes serverless and distributed systems, but also discovering new projects and areas in tech.">
+    <meta name="author" content="Emil Privér">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Elixir: Introduction">
+    <meta property="og:description" content="Hey! My name is Emil Privér, I write about stuffs I learn and build. I am a software developer who likes serverless and distributed systems, but also discovering new projects and areas in tech.">
+    <meta property="og:url" content="https://priver.dev/posts/elixir-introduction/">
+    <meta property="og:image" content="https://priver.dev/astropaper-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://priver.dev/posts/elixir-introduction/">
+    <meta property="twitter:title" content="Elixir: Introduction">
+    <meta property="twitter:description" content="Hey! My name is Emil Privér, I write about stuffs I learn and build. I am a software developer who likes serverless and distributed systems, but also discovering new projects and areas in tech.">
+    <meta property="twitter:image" content="https://priver.dev/astropaper-og.jpg">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <script src="/toggle-theme.js"></script>
+  <link rel="stylesheet" href="/assets/about.311c2337.css" />
+<link rel="stylesheet" href="/assets/_slug_.1fb8df1a.css" />
+<link rel="stylesheet" href="/assets/_slug_.01d71da7.css" />
+<link rel="stylesheet" href="/assets/about.570f4154.css" />
+<link rel="stylesheet" href="/assets/_slug_.1b182ae4.css" />
+<link rel="stylesheet" href="/assets/_slug_.778dab85.css" /><script type="module">const e=document.querySelector(".hamburger-menu"),n=document.querySelector("#menu-items")?.classList,t=document.querySelector(".icon-container")?.classList,o=document.querySelector("#first-line")?.classList,a=document.querySelector("#second-line ")?.classList,s=document.querySelector("#third-line")?.classList;e.addEventListener("click",function(r){e?.getAttribute("aria-expanded")==="false"?(e?.setAttribute("aria-expanded","true"),e?.setAttribute("aria-label","Close Menu"),n?.remove("display-none"),t?.remove("flex"),t?.add("relative"),o?.add("rotate-45","absolute","bottom-1/2"),s?.add("display-none"),a?.add("!w-full","-rotate-45","absolute","bottom-1/2")):(e?.setAttribute("aria-expanded","false"),e?.setAttribute("aria-label","Open Menu"),n?.add("display-none"),t?.add("flex"),t?.remove("relative"),o?.remove("rotate-45","absolute","bottom-1/2"),s?.remove("display-none"),a?.remove("!w-full","-rotate-45","absolute","bottom-1/2"))});
+</script></head>
+  <body>
+    <header class="astro-IMPBK3X5">
+  <a id="skip-to-content" href="#main-content" class="astro-IMPBK3X5">Skip to content</a>
+  <div class="nav-container astro-IMPBK3X5">
+    <div class="top-nav-wrap astro-IMPBK3X5">
+      <a href="/" class="logo astro-IMPBK3X5">
+        Emil Privér
+      </a>
+      <nav id="nav-menu" class="astro-IMPBK3X5">
+        <button class="hamburger-menu focus-outline astro-IMPBK3X5" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items">
+          <div class="icon-container flex astro-IMPBK3X5">
+            <div id="first-line" class="astro-IMPBK3X5"></div>
+            <div id="second-line" class="astro-IMPBK3X5"></div>
+            <div id="third-line" class="astro-IMPBK3X5"></div>
+          </div>
+        </button>
+        <ul id="menu-items" class="display-none sm:flex astro-IMPBK3X5">
+          <li class="astro-IMPBK3X5">
+            <a href="/posts" class=" astro-IMPBK3X5">
+              Posts
+            </a>
+          </li>
+          <li class="astro-IMPBK3X5">
+            <a href="/tags" class=" astro-IMPBK3X5">
+              Tags
+            </a>
+          </li>
+          <li class="astro-IMPBK3X5">
+            <a href="/about" class=" astro-IMPBK3X5">
+              About
+            </a>
+          </li>
+          <li class="astro-IMPBK3X5">
+            <a type="button" href="/search" tabindex="0" class="group focus-outline p-3 sm:p-1  astro-IMPBK3X5 astro-AENLN72D" aria-label="search" title="Search">
+  <svg xmlns="http://www.w3.org/2000/svg" class="scale-125 sm:scale-100 astro-IMPBK3X5"><path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z" class="astro-IMPBK3X5"></path>
+              </svg>
+</a>
+
+
+          </li>
+          <li class="astro-IMPBK3X5">
+            <button id="theme-btn" class="focus-outline astro-IMPBK3X5" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                  <svg xmlns="http://www.w3.org/2000/svg" id="moon-svg" class="astro-IMPBK3X5">
+                    <path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z" class="astro-IMPBK3X5"></path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" id="sun-svg" class="astro-IMPBK3X5">
+                    <path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z" class="astro-IMPBK3X5"></path>
+                  </svg>
+                </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="max-w-3xl mx-auto px-4">
+  <hr class="border-skin-line" aria-hidden="true">
+</div>
+</header>
+
+
+
+<div class="max-w-3xl mx-auto w-full px-2 flex justify-start astro-TUOHNYCG">
+    <button class="mt-8 mb-2 hover:opacity-75 flex focus-outline astro-TUOHNYCG" onclick="history.back()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="astro-TUOHNYCG"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" class="astro-TUOHNYCG"></path>
+      </svg><span class="astro-TUOHNYCG">Go back</span>
+    </button>
+  </div><main id="main-content" class="astro-TUOHNYCG">
+    <h1 class="post-title astro-TUOHNYCG">Elixir: Introduction</h1>
+    <div class="opacity-80 flex items-center space-x-2 my-2 astro-TUOHNYCG"><svg xmlns="http://www.w3.org/2000/svg" class="scale-100 w-6 h-6 inline-block fill-skin-base" aria-hidden="true"><path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg><span class="sr-only">Posted on:</span><span class="italic text-base">6 november 2022<span aria-hidden="true"> | </span><span class="sr-only"> at </span>13:00</span></div>
+    <article id="article" role="article" class="mx-auto max-w-3xl mt-8 prose astro-TUOHNYCG">
+      <p>I did recently visit a small Elixir and Erlang talk in Varberg, Sweden and I learned some stuff that is something I want to share in this article. The first impression I got was that elixir is a language that is made to be easily understood by developers (short time to get started) but is also built quite smart when it comes to stuff such as spreading running code over multiple cores. But also do elixir have support for releasing a new update to the server without needing to restart the server (hot swap).
+Erlang also comes with soft real-time computing meaning that when Elixir is computing real-time data does Elixir allows tasks to be sent after the task’s deadline without the system handling the tasks as a failure as long as the task is completed.</p>
+<h2 id="what-is-elixir">What is Elixir</h2>
+<p>Elixir is a functional, concurrent, fault-tolerance and general-purpose programming language running in Erlang VM, built to make it easy to develop scalable and maintainable applications, also a language that gives a guarantee to know if another process is killed or stuck. The language comes with support for hot-swapping code, meaning that you can swap out running code and use the new functionality without interrupting the service. Ericsson did build the language erlang and erlang-VM to be able to hot swap code which is running without interrupting or closing phone calls. With other languages could this mean downtime which is something that telecom can’t have as important calls could be active when a bug needs to be fixed urgently.</p>
+<p>Elixir runs your code in lightweight threads when your code is executed, called processes. Each process is isolated but talks (exchange information) to another process via what Elixir calls “Messages”. It’s not uncommon that Elixir is running 100 thousands of processes concurrently without impacting another process. As all the processes are running isolated, each process has its garbage collection, meaning that 1 process doesn’t need to stop other processes from running. In languages such as JavaScript could this mean that the whole script is not running as Node needs to handle its garbage, in elixir case would this mean that the code you are serving your users won’t stuck or be slow. This is generally called the actor model. The Actor model is a mathematical model of concurrent computation that treats the actor as the universal primitives of concurrent computation. When an Actor receives a message is it able to make its own decisions such as creating more actors, sending more messages, and telling the system how to respond to the next message. An actor can modify its state but no other process states directly, but can modify other processes states by messaging. As each process can communicate with another process does also Elixir provide fault-tolerance functionality by creating what Elixir calls “supervisors”. The supervisor is used to telling the system how to restart parts of your system when things go bad and revert it to its initial state which is guaranteed to work, this is also how Elixir can guarantee fault tolerance. To make Elixir able to run concurrently does it need BEAM or Bogdan Erlang Abstract Machine which is Erlangs Virtual Machine.</p>
+<p>Erlangs OTP could you say is a part of the code of Erlang which is providing modules, libraries, and behaviors that represent standard implementations of common practices like message passing or spawning tasks. This means that instead of inventing the wheel again for common services like GenServer, Elixirs OTP provides these tools for you to just grab and use. BEAM uses 1 OS thread per core and runs a scheduler on every os thread to schedule tasks to be executed on that core.</p>
+<p>An OTP that Erlang provides which can be used in Elixir is called GenServer. A library that Erlang provides which can be used in Elixir is called GenServer which is a long-running stateful process allowed to send and receive messages. As GenServer or generic server process is that you can keep GenServer always up to date but also execute code async, create a standard set of functions that can be re-used, and also a good way to log errors via GenServer. But it does also provide a good way to handle monitoring events and system messages. GenServer is part of a supervisor and works as a client-server relation between your code and the GenServer. But GenServer is not the only way to work with a state in your application, Erlang also provides ETS or Erlang Term Storage which is a robust in-memory storage store built into OTP which makes it usable within Elixir.  ETS can store large amounts of data available to processes.</p>
+<p>Outside of platform and language features does also Elixir provide good tooling features which are built to help you develop your application. The mix is the tool used to create, build, manage tasks, and run tests in your application. But Elixir does also provide tooling to interact with your code, the same way Django has interactive tooling. Here are you able to run different functionality such as code reloading, reading formatted docs, or debugging a problem by executing functions in a shell environment. But these interactive tools are also reachable from a website that enables you to run functionality in your code from a website called Livebook.</p>
+<h2 id="atoms">Atoms</h2>
+<p>An atom is a constant whose value is its name with no static type assigned to the atom as Elixir is a dynamic language. Some of those are defined by the system to create a standard for how the code is running. One of these atoms is “:ok” which can be used to tell a function that the execution of the function was ok and no error happened. To be able to create an atom in another language would you need to create a constant and assign a value to it with a static type. Meaning that a language that is strict on types would probably create problems as you could check if a return value which is a string is the same as a constant which is a number, but with the same data in both the return and the constant.</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">apple</span></span>
+<span class="line"><span style="color:#D19A66">:</span><span style="color:#56B6C2">apple</span></span>
+<span class="line"><span style="color:#ABB2BF">:</span></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">orange</span></span>
+<span class="line"><span style="color:#D19A66">:</span><span style="color:#56B6C2">orange</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">apple</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">==</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">:</span><span style="color:#56B6C2">apple</span></span>
+<span class="line"><span style="color:#D19A66">true</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">apple</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">==</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">:</span><span style="color:#56B6C2">orange</span></span>
+<span class="line"><span style="color:#D19A66">false</span></span></code></pre>
+<h2 id="phoenix">Phoenix</h2>
+<p>Phoenix is a web framework built on Elixir which implements a server-sided Model View Controller. For people that know what Pythons Django is, then Phoenix is the similarity but for Elixir with some extra features such as LiveView. But it also comes with features such as PubSub and Swoosh which are 2 great libraries providing value when developing your Phoenix application. PubSub is used to develop real-time functionality on your website and Swoosh is a feature to help you compose, deliver and test emails sent from your application. As Phoenix comes with a lot out of the box it makes you able to get up and running fast but also that you don’t need to reinvent the wheel as Phoenix has a lot of tools already created for you.</p>
+<p>More info about Phoenix <a href="https://www.phoenixframework.org/">here</a></p>
+<h3 id="phoenixs-liveview">Phoenix’s LiveView</h3>
+<p>The first thought I had when I first did see Phoenix’s live view was that it looked like React Server Components which is not the case. It’s more like Blazor’s live view. Phoenix live view works by listening to a WebSocket which broadcasts messages to the socket telling it to re-render parts of the HTML/template. This means that if you make a change to the server side for example, that an SMS is sent into the system and your users need this information without reloading the page then phoenix can show that message without reloading the page by sending the message into the socket.</p>
+<h2 id="livebook">Livebook</h2>
+<p>Livebook is Elixir’s version of Jupyter but with some extra cool functions. Livebook is a library of markdown files where you can add executable Elixir code which can for example be used to discover more about your program or work with data but they also give you LiveView and Beam which allows you to write code in 1 place and re-use it in another place. But also to collaborate in a team within your
+Livebook. Livebook is both available to run locally on your machine and also in the cloud to enable multiple people to use the same Livebook server and work together.</p>
+<p>Livebook is also able to let you investigate problems within your running project. This means that if your customers are experiencing problems and you want to find out what the problem is, then you can within Livebook test certain functionality even if the application is still serving your users. But also a good way to document your application to enable others in your team to understand and work with your application easier.</p>
+<p>More info about Livebook <a href="https://livebook.dev/">here</a></p>
+<h2 id="pattern-matching">Pattern Matching</h2>
+<p>I’ve heard that pattern matching was something good within Elixir, so I looked into it.  In elixir is <code>=</code> a match operator which you can compare to the equal sign in algebra, where the goal is that the value on the left side of <code>=</code> is the same as the value on the right side of <code>=</code>. And if the values match does Elixir return the value, or it throws an error if it fails.</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> x </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span></span>
+<span class="line"><span style="color:#D19A66">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> x</span></span>
+<span class="line"><span style="color:#D19A66">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> x</span></span>
+<span class="line"><span style="color:#56B6C2">**</span><span style="color:#ABB2BF"> (</span><span style="color:#E5C07B">MatchError</span><span style="color:#ABB2BF">) no match of right hand side </span><span style="color:#D19A66">value:</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span></span></code></pre>
+<p>In this example, we see that in the first 2 examples both values did match as 1 <code>=</code> x and x <code>=</code> 1 but when we tried to check if 2 = x then the execution failed as 2 != 1. Now, this is a basic example that in many other languages works the same, but pattern matching in elixir also works with for example tuples.</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> {a, b, c} </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> {</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">hello</span><span style="color:#ABB2BF">, </span><span style="color:#98C379">&quot;world&quot;</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">42</span><span style="color:#ABB2BF">}</span></span>
+<span class="line"><span style="color:#ABB2BF">{</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">hello</span><span style="color:#ABB2BF">, </span><span style="color:#98C379">&quot;world&quot;</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">42</span><span style="color:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> a</span></span>
+<span class="line"><span style="color:#D19A66">:</span><span style="color:#56B6C2">hello</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> b</span></span>
+<span class="line"><span style="color:#98C379">&quot;world&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> {a, b, c} </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> {</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">hello</span><span style="color:#ABB2BF">, </span><span style="color:#98C379">&quot;world&quot;</span><span style="color:#ABB2BF">}</span></span>
+<span class="line"><span style="color:#56B6C2">**</span><span style="color:#ABB2BF"> (</span><span style="color:#E5C07B">MatchError</span><span style="color:#ABB2BF">) no match of right hand side </span><span style="color:#D19A66">value:</span><span style="color:#ABB2BF"> {</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">hello</span><span style="color:#ABB2BF">, </span><span style="color:#98C379">&quot;world&quot;</span><span style="color:#ABB2BF">}</span></span></code></pre>
+<p>Meaning that we can use this when we for example want to match the return value of a function. We are also able to pattern match on lists.</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> [a, b, c] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> [</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span>
+<span class="line"><span style="color:#ABB2BF">[</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> a</span></span>
+<span class="line"><span style="color:#D19A66">1</span></span></code></pre>
+<p>And we can use a pipeline to add the rest of the values to 1 variable</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> [head | tail] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> [</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span>
+<span class="line"><span style="color:#ABB2BF">[</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> head</span></span>
+<span class="line"><span style="color:#D19A66">1</span></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> tail</span></span>
+<span class="line"><span style="color:#ABB2BF">[</span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span></code></pre>
+<p>And append values to an array in an easy way with the pipeline</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> list </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> [</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span>
+<span class="line"><span style="color:#ABB2BF">[</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> [</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF"> | list]</span></span>
+<span class="line"><span style="color:#ABB2BF">[</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">2</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">3</span><span style="color:#ABB2BF">]</span></span></code></pre>
+<p>But Elixir also supports the pin operator which is used to do pattern matching to a variable with an existing variable rather than rebinding the variable.</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> x </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span></span>
+<span class="line"><span style="color:#D19A66">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">^x</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">2</span></span>
+<span class="line"><span style="color:#56B6C2">**</span><span style="color:#ABB2BF"> (</span><span style="color:#E5C07B">MatchError</span><span style="color:#ABB2BF">) no match of right hand side </span><span style="color:#D19A66">value:</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">2</span></span></code></pre>
+<p>As we did earlier pinned value of x to 1 is the equivalent of the following code</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">iex</span><span style="color:#56B6C2">&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">2</span></span>
+<span class="line"><span style="color:#56B6C2">**</span><span style="color:#ABB2BF"> (</span><span style="color:#E5C07B">MatchError</span><span style="color:#ABB2BF">) no match of right hand side </span><span style="color:#D19A66">value:</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">2</span></span></code></pre>
+<h2 id="use-cases-of-elixir-or-erlang-in-production">Use-cases of Elixir or Erlang in production</h2>
+<p>There are plenty of use cases for Elixir or Erlang by companies but most of the companies I’ve seen using the languages in production use it for real-time communication or messages queues and some of these companies are Spotify, Discord, Klarna, Ericsson, and WhatsApp. But Elixir is also popular in e-commerce, banking, advertising, and IoT maybe because it has plenty of libraries and frameworks built on top of it, such as Phoenix. And one of the main reasons is that Elixir handles a lot of traffic concurrently and scales easily due to Erlang’s VM. Elixir, on the other hand, will probably not be the fastest choice, but it handles tons of traffic on a high level.</p>
+<p>More use-cases at <a href="https://elixir-lang.org/cases.html">Elixirs website</a></p>
+<h3 id="discord">Discord</h3>
+<p>Discord has been using Elixir since the beginning and handling the core of its products which is the chat infrastructure. Discord is a real-time communication service with both voice and messaging support which as of 8 October 2020 handles 100 million active users each month. Elixir was picked to power relaying messages, real-time applications, and Discord’s WebSocket which is used for real-time communication within all apps they provide. While Discord uses Python to power its API. While the Python part of the infrastructure is a monolith while the Elixir part has multiple services distributed to multiple servers running each task concurrently with GenServer and GenStage.</p>
+<h3 id="carscom">Cars.com</h3>
+<p>Cars.com is one of the leading platforms for selling cars and buying cars online serving more than 400 million visitors annually. Adopting Elixir as the primary language for its application enabled developers to get started faster and understand the code faster helping cars.com to grow faster and enabling 0 downtimes with a scalable and reliable platform. Cars.com uses Phoenix for its front end enabling Cars.com to show real-time data for its users.</p>
+<h3 id="all-aboard">All Aboard</h3>
+<p>All Aboard is a Swedish company selling train tickets all over the world.  They use Elixir to run their backend in a pretty cool way. As All Aboard needs to fetch information from multiple APIs could this mean that they need to way a long time for the response they need for their users, and sometimes they fetch APIs returning links to other APIs which need to also be fetched. They solved this by creating a struct that returns</p>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word"><code><span class="line"><span style="color:#ABB2BF">{</span><span style="color:#D19A66">:</span><span style="color:#56B6C2">async</span><span style="color:#ABB2BF">, </span><span style="color:#C678DD">fn</span><span style="color:#ABB2BF"> -&gt; </span><span style="color:#61AFEF">fetch_the_other_thing</span><span style="color:#ABB2BF">() </span><span style="color:#C678DD">end</span><span style="color:#ABB2BF">}</span></span></code></pre>
+<p>When the whole struct is built do they go through each value and put them into a queue in GenServer which creates tasks with the respective function and executes it and as fast as a new task is done will a new task start. And as fast as they have a new response, they add a new message to their WebSocket which updates user’s view.
+In this case, does Elixirs Concurrency work really well as some responses could take a really long time and still don’t interrupt other tasks that are running.</p>
+<p>I did ask Patrik at All Aboard for a comment on what he thought about Elixir and how they use Elixir. Patrik told that as he comes from Python and Ruby and thinks this quite magical because it’s easy to understand Elixir, and it’s model, but also works really well.</p>
+<p>Thanks to Patrik at All Aboard for wanting to share his experience and how he use Elixir. You can find more information about All Aboard on their <a href="https://allaboard.eu/">website</a></p>
+<h2 id="my-thoughts">My thoughts</h2>
+<p>I think Elixir is a great language that can handle tons of work at the same time due to its concurrent model but also how easy it is to get started with Elixir and get up and running. I don’t think programming should be hard, and many languages make it hard to get up and running quickly, but also hard to write your program in general. This is something that Elixir doesn’t have due to the tooling they have created and the way the language is written. Something I don’t like is that it doesn’t come as required, mostly because I think types help prevent problems and enable us to remove some tests that we don’t need to write as we typed them and tested all cases by using the types. On the other hand are you able to use types in Elixir and could set a standard for the project to type the code.</p>
+<p>I think the way I would use Elixir is with real-time data or message queues. For example, building a notification queue for apps and using Elixir to concurrently send all the messages to the devices as I think this would be the best use-case for it, but I want to explore it in more areas than queues.</p>
+<h2 id="thanks">Thanks</h2>
+<p>Thanks to Lars Wikman for the great Elixir talk he had, But also for wanting to read this post and give feedback. Lars is doing great things for the Elixir community. I recommend checking him out at <a href="https://underjord.io/">https://underjord.io/</a> or his <a href="https://www.youtube.com/c/Underjord">YouTube</a></p>
+<p>Also want to thank the community at Kodsnack for answering my questions regarding the language and sharing information on how they use it. Great community with great people.</p>
+<h2 id="end">End</h2>
+<p>Do you have any input or stuff I could add or change? I would love feedback! I am using a Twitter post for comments here: <a href="https://twitter.com/emil_priver/status/1589632749446438912">https://twitter.com/emil_priver/status/1589632749446438912</a></p>
+<p>I want to explore this language more and the next step in this series of Elixir posts will be to test Elixirs concurrency.</p>
+    </article>
+
+    <ul class="tags-container astro-TUOHNYCG">
+      <li class="inline-block my-1 underline-offset-4 astro-M5B7HHFI">
+  <a href="/tags/Elixir" class="pr-1 text-sm group astro-M5B7HHFI">
+    <svg xmlns="http://www.w3.org/2000/svg" class=" scale-75 astro-M5B7HHFI"><path d="M16.018 3.815 15.232 8h-4.966l.716-3.815-1.964-.37L8.232 8H4v2h3.857l-.751 4H3v2h3.731l-.714 3.805 1.965.369L8.766 16h4.966l-.714 3.805 1.965.369.783-4.174H20v-2h-3.859l.751-4H21V8h-3.733l.716-3.815-1.965-.37zM14.106 14H9.141l.751-4h4.966l-.752 4z" class="astro-M5B7HHFI"></path>
+    </svg>
+    &nbsp;<span class="astro-M5B7HHFI">Elixir</span>
+  </a>
+</li>
+
+
+    </ul>
+  </main><footer class="mt-auto astro-FAGJKM3J">
+  <div class="max-w-3xl mx-auto px-0">
+  <hr class="border-skin-line" aria-hidden="true">
+</div>
+  <div class="footer-wrapper astro-FAGJKM3J">
+    <div class="social-icons flex astro-DCFUEFV5">
+  <a type="button" href="https://github.com/emilpriver" tabindex="0" class="group link-button astro-DCFUEFV5 astro-AENLN72D" title=" Emil Privér on Github">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path
+      d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+    ></path>
+  </svg>
+</a>
+
+<a type="button" href="https://instagram.com/emil_priver" tabindex="0" class="group link-button astro-DCFUEFV5 astro-AENLN72D" title="Emil Privér on Instagram">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+    <circle cx="12" cy="12" r="3"></circle>
+    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501"></line>
+  </svg>
+</a>
+
+<a type="button" href="https://www.linkedin.com/in/emilpriver/" tabindex="0" class="group link-button astro-DCFUEFV5 astro-AENLN72D" title="Emil Privér on LinkedIn">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon-tabler"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+    <line x1="8" y1="11" x2="8" y2="16"></line>
+    <line x1="8" y1="8" x2="8" y2="8.01"></line>
+    <line x1="12" y1="16" x2="12" y2="11"></line>
+    <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+  </svg>
+</a>
+
+<a type="button" href="https://twitter.com/emil_priver" tabindex="0" class="group link-button astro-DCFUEFV5 astro-AENLN72D" title="Emil Privér on Twitter">
+  <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon-tabler"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
+    </svg>
+</a>
+
+<a type="button" href="https://twitch.tv/privann" tabindex="0" class="group link-button astro-DCFUEFV5 astro-AENLN72D" title="Emil Privér on Twitch">
+  <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon-tabler"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"></path>
+    </svg>
+</a>
+
+
+</div>
+
+
+    <div class="copyright-wrapper astro-FAGJKM3J">
+      <span class="astro-FAGJKM3J">Copyright &#169; 2022</span>
+      <span class="separator astro-FAGJKM3J">&nbsp;|&nbsp;</span>
+      <span class="astro-FAGJKM3J">All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+
+  </body></html>
+

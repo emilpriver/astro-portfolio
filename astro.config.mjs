@@ -10,7 +10,7 @@ import image from '@astrojs/image';
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,6 +32,6 @@ export default defineConfig({
     },
     extendDefaultPlugins: true
   },
-  output: "server",
+  output: "static",
   adapter: vercel()
 });
